@@ -1,6 +1,9 @@
 # Importar las librerias necesarias
 import pandas as pd
 
+def linea_separacion():
+    print( '**'.center (80,'*'))
+
 # Declaración de variables. Se crean listas vacías que corresponden a los atributos de las naves
 Tipo_de_nave = []
 Pais = []
@@ -8,16 +11,16 @@ Nombre_nave = []
 Año_primer_lanzamiento = []
 
 # Se muestra en pantalla el menú de bienvenida.
-print( '**'.center (80,'*'))
+linea_separacion()
 print('ESTE ES EL PROGRAMA DE REGISTRO DE NAVES'. center (80,'*'))
-print( '**'.center (80,'*'))
+linea_separacion()
 nombre = str(input('Por favor ingrese su nombre: '))
 nombre = nombre.upper()
 
 # Se crea un cliclo para que el programa se ejecute de manera infinita, hasta que el usuario decida finalizarlo.
 while True:
     # Creacion menú principal. En este apartado se solita al usuario seleccional la acción que requiera.
-    print( '**'.center (80,'*'))
+    linea_separacion()
     print('Login:', nombre)
     print('¿Qué deseas hacer?'. center (80))
     print("""                                                   
@@ -29,7 +32,7 @@ while True:
           (6) Salir 
           """. center(80)) 
     res = input('Ingrese el número correspondiente a la opción requerida: ')
-    print('**'.center (80,'*'))
+    linea_separacion()
     # Con la función Try se encapsula un posible error cuando el usuario ingrese una opción no descrita en el menú
     try:
         respuesta = int(res)
@@ -74,9 +77,9 @@ while True:
                 filtrar = input('Ingrese el tipo de nave que desea filtrar: ')
                 df2 = pd.read_excel('naves_espaciales.xlsx', index_col = 0)
                 df3 = df2[df2['Tipo de nave'] == filtrar]
-                print('**'.center (80,'*'))
+                linea_separacion()
                 print(df3)
-                print('**'.center (80,'*'))
+                linea_separacion()
                 # Se le solicita al usuario ingresar una opción en caso de que desee descargar el DataFrame en un archivo .xlsx
                 print("""
                 ¿Desea descargar la base de datos filtrada?
@@ -86,8 +89,8 @@ while True:
                 respuesta = str(input('Ingrese una opción:'))
                 if respuesta == 'a':
                     df3.to_excel('filtro_por_tipo_de_nave.xlsx')
-                    print('**'.center (80,'*'))
-                    print('Base de datos descargada satisactoriamente... '. center (80,'*'))
+                    linea_separacion()
+                    print('...Base de datos descargada satisactoriamente... '. center (80,'*'))
                 else:
                     continue              
               
@@ -98,9 +101,9 @@ while True:
                 filtrar = input('Ingrese el pais que desea filtrar: ')
                 df2 = pd.read_excel('naves_espaciales.xlsx', index_col = 0)
                 df3 = df2[df2['Pais'] == filtrar]
-                print('**'.center (80,'*'))
+                linea_separacion()
                 print(df3)
-                print('**'.center (80,'*'))
+                linea_separacion()
                 # Se le solicita al usuario ingresar una opción en caso de que desee descargar el DataFrame en un archivo .xlsx
                 print("""
                 ¿Desea descargar la base de datos filtrada?
@@ -110,8 +113,8 @@ while True:
                 respuesta = str(input('Ingrese una opción:'))
                 if respuesta == 'a':
                     df3.to_excel('Filtro_por_pais.xlsx')
-                    print('**'.center (80,'*'))
-                    print('Base de datos descargada satisfactoriamente... '. center (80,'*'))
+                    linea_separacion()
+                    print('...Base de datos descargada satisfactoriamente... '. center (80,'*'))
                 else:
                     continue
                 
@@ -121,9 +124,9 @@ while True:
                 filtrar = input('Ingrese el nombre de la nave que desea filtrar: ')
                 df2 = pd.read_excel('naves_espaciales.xlsx', index_col = 0)
                 df3 = df2[df2['Nombre de la nave'] == filtrar]
-                print('**'.center (80,'*'))
+                linea_separacion()
                 print(df3)
-                print('**'.center (80,'*'))
+                linea_separacion()
                 # Se le solicita al usuario ingresar una opción en caso de que desee descargar el DataFrame en un archivo .xlsx
                 print("""
                 ¿Desea descargar la base de datos filtrada?
@@ -133,8 +136,8 @@ while True:
                 respuesta = str(input('Ingrese una opción:'))
                 if respuesta == 'a':
                     df3.to_excel('Filtro_por_nombre_de_nave.xlsx')
-                    print('**'.center (80,'*'))
-                    print('Base de datos descargada satisfactoriamente... '. center (80,'*'))
+                    linea_separacion()
+                    print('...Base de datos descargada satisfactoriamente... '. center (80,'*'))
                 else:
                     continue
                
@@ -157,9 +160,9 @@ while True:
                     df2 = pd.read_excel('naves_espaciales.xlsx', index_col = 0)                    
                     filtro = int(input('Ingrese el año que desea filtrar: '))
                     df3 = df2[df2['Año del primer lanzamiento'] == filtro]
-                    print('**'.center (80,'*'))
+                    linea_separacion()
                     print(df3)
-                    print('**'.center (80,'*'))
+                    linea_separacion()
                     # Se le solicita al usuario ingresar una opción en caso de que desee descargar el DataFrame en un archivo .xlsx
                     print("""
                     ¿Desea descargar la base de datos filtrada?
@@ -169,8 +172,8 @@ while True:
                     respuesta = str(input('Ingrese una opción:'))
                     if respuesta == 'a':
                         df3.to_excel('Filtro_por_año_de_lanzamiento.xlsx')
-                        print('**'.center (80,'*'))
-                        print('Base de datos descargada satisactoriamente... '. center (80,'*'))               
+                        linea_separacion()
+                        print('...Base de datos descargada satisactoriamente... '. center (80,'*'))               
                 
                 # Al ingresar la opción 'b' el programa realiza el filtro en la ... 
                 #columna del año del primer lanzamiento, con valores superiores al año ingresado
@@ -179,9 +182,9 @@ while True:
                     filtro = int(input('Ingrese el año que desea filtrar: '))
                     df3 = df2[df2['Año del primer lanzamiento']  > filtro]
                     df3 = df3.sort_values(by = ['Año del primer lanzamiento'], ascending = [True])
-                    print('**'.center (80,'*'))
+                    linea_separacion()
                     print(df3)
-                    print('**'.center (80,'*'))
+                    linea_separacion()
                     # Se le solicita al usuario ingresar una opción en caso de que desee descargar el DataFrame en un archivo .xlsx
                     print("""
                     ¿Desea descargar la base de datos filtrada?
@@ -191,8 +194,8 @@ while True:
                     respuesta = str(input('Ingrese una opción:'))
                     if respuesta == 'a':
                         df3.to_excel('Filtro_por_años_posteriores.xlsx')
-                        print('**'.center (80,'*'))
-                        print('Base de datos descargada satisactoriamente... '. center (80,'*'))
+                        linea_separacion()
+                        print('...Base de datos descargada satisactoriamente... '. center (80,'*'))
                 
                 # Al ingresar la opción 'c' el programa realiza el filtro en la ... 
                 #columna del año del primer lanzamiento, con valores inferiores al año ingresado
@@ -201,9 +204,9 @@ while True:
                     filtro = int(input('Ingrese el año que desea filtrar: '))
                     df3 = df2[df2['Año del primer lanzamiento']  < filtro]
                     df3 = df3.sort_values(by = ['Año del primer lanzamiento'], ascending = [False])
-                    print('**'.center (80,'*'))
+                    linea_separacion()
                     print(df3)
-                    print('**'.center (80,'*'))
+                    linea_separacion()
                     # Se le solicita al usuario ingresar una opción en caso de que desee descargar el DataFrame en un archivo .xlsx
                     print("""
                     ¿Desea descargar la base de datos filtrada?
@@ -214,8 +217,8 @@ while True:
                     # Al ingresar la opción 'a' el programa guarda el DataFrame en formato .xlsx
                     if respuesta == 'a':
                         df3.to_excel('Filtro_por_años_anteriores.xlsx')
-                        print('**'.center (80,'*'))
-                        print('Base de datos descargada satisactoriamente... '. center (80,'*'))
+                        linea_separacion()
+                        print('...Base de datos descargada satisactoriamente... '. center (80,'*'))
                 else:
                     continue
                 
@@ -224,7 +227,7 @@ while True:
         # Opción 3. (Ver todas las naves). El programa llega a esta opción cuando el usuario selecciona 3.
         # Se muestra en pantalla el DataFrame que incluye todos los registros de las naves ingresadas.
         elif respuesta == 3:
-            print('Registros actuales'. center (80))
+            print('Registros actuales'. center (80,'*'))
             print('**'.center (80,'*'))
             df2 = pd.read_excel('naves_espaciales.xlsx', index_col = 0)
             print(df2)
